@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>elems.js Example</title>
+		<link rel="stylesheet" href="exmaples.css">
+	</head>
+	<body>
+		<h1>Example 2: A Simple List (Global Registration)</h1>
+		<script async defer type="module">
+			import { elemRegister } from '../elems.js';
+
+			elemRegister( '_', null, 'ul', 'li' );
+
+			document.body.appendChild(
+				_ul(
+					{ style: 'color: red' },
+					_li( 'Hello' ),
+					_li( 'Click Me', { click: e => alert('Hi') } )
+				)
+			);
+		</script>
+	</body>
+</html>

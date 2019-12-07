@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>elems.js Example</title>
+		<link rel="stylesheet" href="exmaples.css">
+	</head>
+	<body>
+		<h1>Example 1: A Simple List</h1>
+		<script async defer type="module">
+			import { elemGenerator } from '../elems.js';
+
+			const ul = elemGenerator('ul')
+			const li = elemGenerator('li')
+
+			document.body.appendChild( ul(
+			  li( 'Hello' ),
+			  li( 'Click Me', { click: e => alert('Hi') } ),
+			  li( 'Don\'t Click Me', { click: e => alert('I said no'), style: 'color: red;' } ),
+			  li( 'Sub Set', ul (
+			      li( 'One', { 'data-foo': '1' } ),
+			      li( 'Two' ),
+			      li( 'Three' )
+			  ) )
+			) );
+		</script>
+	</body>
+</html>

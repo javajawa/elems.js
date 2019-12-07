@@ -1,0 +1,8 @@
+script
+{
+	display: block;
+	white-space: pre-wrap;
+	font-family: monospace;
+	border: 1px black solid;
+	margin: 5px 50px;
+}
