@@ -94,7 +94,7 @@ Objects:
 Providing any other type in an argument will result in an exception being thrown.
 
 ### Example 3 - A Quick List (`elemGenerator`)
-[See Demo](exmaples/simple-list.html)
+[See Demo](examples/simple-list.html)
 
 In this example, we're going to create a `<ul>` with four items, which have
 example of text, event handling, styling, and nesting.
