@@ -94,6 +94,7 @@ Objects:
 Providing any other type in an argument will result in an exception being thrown.
 
 ### Example 3 - A Quick List (`elemGenerator`)
+[See Demo](exmaples/simple-list.html)
 
 In this example, we're going to create a `<ul>` with four items, which have
 example of text, event handling, styling, and nesting.
@@ -117,6 +118,7 @@ document.body.appendChild( ul(
 ```
 
 ### Example 4 - A Quick List (`elemRegister`)
+[See Demo](exmaples/global-list.html)
 
 Here we shall register global function to generate `<ul>`s and `<li>`s.
 
@@ -133,6 +135,7 @@ _ul(
 ```
 
 ### Example 5: Prefix-less SVG Element Generators
+[See Demo](exmaples/svg.html)
 
 ```js
 import { elemRegister } from './elems.js';
