@@ -156,6 +156,10 @@ Arrays passed to `elem.js` generated functions are automatically flattened
 and treated as a list of parameters (to maximum depth of 3).
 This allows you to avoid intermediate representations of various other params.
 
+Note that we can not just for `items.map(li)`, as this will call `li` with two
+parameters, the second one being the numeric index. Numbers are not a valid
+parameter type, and will cause an error to be thrown.
+
 ```js
 import { elemGenerator } from '../elems.js';
 
@@ -169,6 +173,6 @@ const items = [
 ];
 
 document.body.appendChild(
-	ul( items.map( li ) )
+	ul( items.map( i => li(i) ) )
 );
 ```
