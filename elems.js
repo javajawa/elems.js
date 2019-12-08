@@ -99,7 +99,7 @@ export function elemGenerator(tag, ns)
 			}
 			else
 			{
-				throw 'Invalid type in arguments for element ' + tag + ', arg was ' + arg;
+				throw 'Invalid type in arguments for element ' + tag + ', arg was ' typeof arg + ': ' + arg;
 			}
 		} );
 
