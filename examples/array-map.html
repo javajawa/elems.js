@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>elems.js Example</title>
+		<link rel="stylesheet" href="exmaples.css">
+	</head>
+	<body>
+		<h1>Example 6: Unpacking Arrays</h1>
+		<script async defer type="module">
+			import { elemGenerator } from '../elems.js';
+
+			const ul = elemGenerator( 'ul' );
+			const li = elemGenerator( 'li' );
+
+			const items = [
+				'Item 1',
+				'Item 2',
+				'Item 3'
+			];
+
+			document.body.appendChild(
+				ul( items.map( li ) )
+			);
+		</script>
+	</body>
+</html>

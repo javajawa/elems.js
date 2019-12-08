@@ -118,7 +118,7 @@ document.body.appendChild( ul(
 ```
 
 ### Example 4 - A Quick List (`elemRegister`)
-[See Demo](exmaples/global-list.html)
+[See Demo](examples/global-list.html)
 
 Here we shall register global function to generate `<ul>`s and `<li>`s.
 
@@ -135,7 +135,7 @@ _ul(
 ```
 
 ### Example 5: Prefix-less SVG Element Generators
-[See Demo](exmaples/svg.html)
+[See Demo](examples/svg.html)
 
 ```js
 import { elemRegister } from './elems.js';
@@ -149,3 +149,26 @@ svg(
 )
 ```
 
+### Example 6: Unpacking Arrays
+[See Demo](examples/array-map.html)
+
+Arrays passed to `elem.js` generated functions are automatically flattened
+and treated as a list of parameters (to maximum depth of 3).
+This allows you to avoid intermediate representations of various other params.
+
+```js
+import { elemGenerator } from '../elems.js';
+
+const ul = elemGenerator( 'ul' );
+const li = elemGenerator( 'li' );
+
+const items = [
+	'Item 1',
+	'Item 2',
+	'Item 3'
+];
+
+document.body.appendChild(
+	ul( items.map( li ) )
+);
+```
