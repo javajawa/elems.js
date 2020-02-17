@@ -91,6 +91,10 @@ export function elemGenerator(tag, ns)
 					{
 						elem.setAttribute( key, arg[key] );
 					}
+					else if ( arg[key] === null )
+					{
+						return;
+					}
 					else
 					{
 						throw 'Invalid type for attribute ' + key + ' in element ' + tag;
