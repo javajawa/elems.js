@@ -98,7 +98,7 @@ export function elemGenerator(tag, ns)
 					}
 					else if ( arg[key] === true )
 					{
-						elem.setAttribute( key, "" );
+						elem.setAttribute( key, '' );
 					}
 					else if ( arg[key] === false )
 					{
