@@ -88,9 +88,17 @@ types, and builds up the element according to them.
 
 *Objects*:
   Objects with iterable keys will be treated as attribute and event maps.
-  Values which are strings are treated as attributes, values that are
-  functions are treated as event handlers. `null`s in the iteration will
-  be treated as values which should be ignored.
+
+  Values which are functions are treated as event handlers. This uses
+  `addEventListener`, so the `on` part of the event name should not be
+  a part of the key.
+
+  Other values are are coerced to strings and treated as attributes, with
+  a few exceptions:
+   - `null` causes no action to happen.
+   - a boolean causes that value to be set without a value (true) or,
+     the attribute to be removed (false).
+   - objects and array cause an exception.
 
 Providing any other type in an argument will result in an exception being thrown.
 
