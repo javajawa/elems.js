@@ -26,7 +26,8 @@
  * Objects:
  *   Objects with iterable keys will be treated as attribute and event maps.
  *   Values which are strings are treated as attributes, values that are
- *   functions are treated as event handlers.
+ *   functions are treated as event handlers. `null`s in the iteration will
+ *   be treated as values which should be ignored.
  *
  * Providing any other type in an argument will result in an exception being thrown.
  *
