@@ -73,20 +73,20 @@ document.body.appendChild(
 The generated functions takes any number of arguments of different
 types, and builds up the element according to them.
 
-Arrays:
+*Arrays*:
   Any arrays supplied in the argument list are treated as additional
   arguments. This has a maximum nested of three layers deep.
 
-Strings:
+*Strings*:
   Strings are converted to text nodes in the document, and added to
   the element.
 
-Nodes/Elements/Attrs:
+*Nodes/Elements/Attrs*:
   Other DOM Nodes, including elements and attributes, supplied to this
   function will be added to the element via `appendChild`/`setAttribute`
   as appropriate to the type.
 
-Objects:
+*Objects*:
   Objects with iterable keys will be treated as attribute and event maps.
   Values which are strings are treated as attributes, values that are
   functions are treated as event handlers. `null`s in the iteration will
