@@ -26,7 +26,7 @@
  * Objects:
  *   Objects with iterable keys will be treated as attribute and event maps.
  *
- *   Values which are function are treated as event handlers. This uses
+ *   Values which are functions are treated as event handlers. This uses
  *   `addEventListener`, so the `on` part of the event name should not be
  *   a part of the key.
  *
@@ -35,7 +35,7 @@
  *    - `null` causes no action to happen.
  *    - a boolean causes that value to be set without a value (true) or,
  *      the attribute to be removed (false).
- *    - objects and array cause and exception.
+ *    - objects and array cause an exception.
  *
  * Providing any other type in an argument will result in an exception being thrown.
  *
