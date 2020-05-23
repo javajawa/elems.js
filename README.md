@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2020 Benedict Harcourt
+
+SPDX-License-Identifier: BSD-2-Clause
+-->
+
 # elems.js
 
 `elems.js` is a lightweight DOM building library for JavaScript, implemented
