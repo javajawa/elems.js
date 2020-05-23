@@ -18,6 +18,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: hallee/eslint-action@1.0.2
+      - uses: a-b-r-o-w-n/eslint-action@v1
         with:
-          repo-token: ${{secrets.GITHUB_TOKEN}}
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
+          files: "*.js"
+          extensions: ".js"
