@@ -164,12 +164,13 @@ export function elemRegister( prefix, ns, ...tags )
 }
 
 /**
- * documentFragment is a helper function to generate Document Fragments in the elems.js style.
+ * documentFragment is a helper function to generate Document Fragments in the
+ * elems.js style.
  *
  * Example: A Custom Element template
  *
- *   let _h1 = elemGenerator( 'h1' );
- *   let _slot = elemGenerator( 'slot' );
+ *   const _h1 = elemGenerator( 'h1' );
+ *   const _slot = elemGenerator( 'slot' );
  *
  *   const template = documentFragment(
  *     _h1( 'the title' )
@@ -186,7 +187,7 @@ export function elemRegister( prefix, ns, ...tags )
  *
  * Example: Appending multiple nodes as a single DOM action
  *
- *   let _li = elemGenerator( 'li' );
+ *   const _li = elemGenerator( 'li' );
  *   const items = documentFragment(
  *     [ 1, 2, 3 ].map( d => _li( d ) ),
  *   );

@@ -13,6 +13,23 @@ generate specific DOM elements, such as `<div>`. Each of these can be called
 with any number of parameters, the types of which will be used to determine
 how they are interpreted
 
+## Contents
+
+- [elems.js](#elemsjs)
+  * [Generating elem.js Functions](#generating-elemjs-functions)
+    + [Using `elemGenerator`](#using--elemgenerator-)
+      - [Example 1: How to use `elemGenerator`](#example-1--how-to-use--elemgenerator-)
+    + [Using `elemRegister`](#using--elemregister-)
+      - [Example 2: How to use `elemRegister`](#example-2--how-to-use--elemregister-)
+  * [Using the `elems.js` generated functions.](#using-the--elemsjs--generated-functions)
+    + [Example 3: A Quick List (`elemGenerator`)](#example-3--a-quick-list---elemgenerator--)
+    + [Example 4: A Quick List (`elemRegister`)](#example-4--a-quick-list---elemregister--)
+    + [Example 5: Prefix-less SVG Element Generators](#example-5--prefix-less-svg-element-generators)
+    + [Example 6: Unpacking Arrays](#example-6--unpacking-arrays)
+  * [Using `documentFragment` for fragments](#using--documentfragment--for-fragments)
+    + [Exmaple 8: Using `documentFragment` to reduce DOM operations](#exmaple-8--using--documentfragment--to-reduce-dom-operations)
+    + [Example 9: Using `elem.js` for Templates](#example-9--using--elemjs--in-custom-element-templates)
+
 ## Generating elem.js Functions
 
 Two methods are provided for creating the `elem.js` functions:
@@ -108,7 +125,7 @@ types, and builds up the element according to them.
 
 Providing any other type in an argument will result in an exception being thrown.
 
-### Example 3 - A Quick List (`elemGenerator`)
+### Example 3: A Quick List (`elemGenerator`)
 [See Demo](examples/simple-list.html)
 
 In this example, we're going to create a `<ul>` with four items, which have
@@ -132,7 +149,7 @@ document.body.appendChild( ul(
 ) );
 ```
 
-### Example 4 - A Quick List (`elemRegister`)
+### Example 4: A Quick List (`elemRegister`)
 [See Demo](examples/global-list.html)
 
 Here we shall register global function to generate `<ul>`s and `<li>`s.
@@ -190,4 +207,60 @@ const items = [
 document.body.appendChild(
 	ul( items.map( i => li(i) ) )
 );
+```
+
+## Using `documentFragment` for fragments
+
+`elems.js` provides a wrapper function to create the elements within a
+[Document Fragment](https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment),
+which can combined with custom elements, templates, or to reduce DOM operations.
+
+This is a stand-alone function which returns a document fragment.
+It takes an array of elements as its arguments, which may be the output
+of other `elems.js` calls, or existing elements.
+
+### Exmaple 8: Using `documentFragment` to reduce DOM operations
+(No demo is supplied for this example)
+
+One use of a fragment is to prepare a list of nodes that you wish to add to
+the DOM at one time. DOM operations can be expensive, and so grouping these
+may be beneficial.
+
+This example demonstrates a AJAX call which appends to an existing items to
+and existing list, using only one append on the actual document.
+
+```js
+import { elemGenerator, documentFragment } from '../elems.js';
+
+const li = elemGenerator( 'li' );
+
+fetch( '/data-source' ).then( r => r.json() )
+	.then( items => documentFragment( items.map( item => li( item ) ) ) )
+	.then( fragment => document.getElementById( 'list' ).appendChild( fragment ) );
+```
+
+### Example 9: Using `elem.js` for Templates
+(No demo is provided for this example)
+
+A document fragment can be used as a generic pre-built template.
+In this example, we define a new custom element which uses a document fragment
+to populate its shadow root.
+
+```js
+const h1 = elemGenerator( 'h1' );
+const slot = elemGenerator( 'slot' );
+
+const template = documentFragment(
+	h1( 'the title' )
+	slot(),
+);
+
+class MyParagraph extends HTMLElement {
+	constructor() {
+		super();
+		this.attachShadow( { mode: 'open' } );
+		this.shadowRoot.appendChild( template.cloneNode( true ) );
+	}
+};
+
 ```
