@@ -1,0 +1,36 @@
+# SPDX-FileCopyrightText: 2020 Benedict Harcourt
+#
+# SPDX-License-Identifier: BSD-2-Clause
+
+name: JS Minification
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'elems.js'
+
+jobs:
+  minify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
+
+      - run: npm install babel-minify
+
+      - name: Auto Minify
+        run: |
+          node_modules/.bin/babel-minify --mangle --simplify \
+          --sourceType "module" --booleans --builtIns --consecutiveAdds \
+          --deadcode --evaluate --flipComparisons --mergeVars --numericLiterals \
+          --propertyLiterals --regexpConstructors \
+          elems.js --outFile elems.min.js
+
+      - name: Auto committing minified files
+        uses: stefanzweifel/git-auto-commit-action@v3.0.0
+        with:
+          commit_message: "[Auto] Minify JS files"
+          branch: ${{ github.ref }}

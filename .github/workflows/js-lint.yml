@@ -8,13 +8,12 @@ on:
   push:
     branches:
       - master
-      - lint-test
   pull_request:
     branches:
       - master
 
 jobs:
-  eslint:
+  es-lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

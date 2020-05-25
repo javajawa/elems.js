@@ -1,6 +1,8 @@
-// SPDX-FileCopyrightText: 2020 Benedict Harcourt
-//
-// SPDX-License-Identifier: BSD-2-Clause
+/*!
+ * SPDX-FileCopyrightText: 2020 Benedict Harcourt
+ *
+ * SPDX-License-Identifier: BSD-2-Clause
+ */
 
 'use strict';
 
@@ -41,7 +43,8 @@
  *      the attribute to be removed (false).
  *    - objects and array cause an exception.
  *
- * Providing any other type in an argument will result in an exception being thrown.
+ * Providing any other type in an argument will result in an exception being
+ * thrown.
  *
  * Example 1 - A quick list
  * ========================
@@ -118,13 +121,13 @@ export function elemGenerator(tag, ns)
 					}
 					else
 					{
-						throw 'Invalid type for attribute ' + key + ' in element ' + tag;
+						throw `Invalid type for attribute ${key} in element ${tag}`;
 					}
 				} );
 			}
 			else
 			{
-				throw 'Invalid type in arguments for element ' + tag + ', arg was ' + typeof arg + ': ' + arg;
+				throw `Invalid type in arguments for element ${tag}, arg was ${typeof arg}: ${arg}`;
 			}
 		} );
 
