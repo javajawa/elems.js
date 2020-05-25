@@ -6,6 +6,10 @@ SPDX-License-Identifier: BSD-2-Clause
 
 # elems.js
 
+![JS Lint](https://github.com/javajawa/elems.js/workflows/JS%20Lint/badge.svg)
+![SPDX Lint](https://github.com/javajawa/elems.js/workflows/SPDX%20Lint/badge.svg)
+![Minify](https://github.com/javajawa/elems.js/workflows/.github/workflows/Minify/badge.svg)
+
 `elems.js` is a lightweight DOM building library for JavaScript, implemented
 as a ES6 module.
 The core functionality is a function-generator, which creates functions to

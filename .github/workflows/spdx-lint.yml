@@ -8,7 +8,6 @@ on:
   push:
     branches:
       - master
-      - lint-test
   pull_request:
 
 jobs:
@@ -16,5 +15,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+
     - name: REUSE Compliance Check
       uses: fsfe/reuse-action@v1.1

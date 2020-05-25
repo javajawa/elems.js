@@ -8,7 +8,6 @@ on:
   push:
     branches:
       - master
-      - lint-test
   pull_request:
     branches:
       - master
