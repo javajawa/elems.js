@@ -5,10 +5,11 @@
 name: JS Minification
 
 on:
-  push:
-    branches:
+  pull_request:
+    branch:
       - master
     paths:
+      - '.github/workflows/minify.yml'
       - 'elems.js'
 
 jobs:
@@ -17,6 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
+          token: ${{ secrets.PA_TOKEN }}
           ref: ${{ github.head_ref }}
 
       - run: npm install babel-minify
@@ -33,4 +35,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v3.0.0
         with:
           commit_message: "[Auto] Minify JS files"
-          branch: ${{ github.ref }}
+          branch: ${{ github.head_ref }}
