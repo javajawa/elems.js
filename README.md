@@ -30,6 +30,7 @@ how they are interpreted
     + [Example 4: A Quick List (`elemRegister`)](#example-4-a-quick-list-elemregister)
     + [Example 5: Prefix-less SVG Element Generators](#example-5-prefix-less-svg-element-generators)
     + [Example 6: Unpacking Arrays](#example-6-unpacking-arrays)
+    + [Example 7: Optional elements using null](#example-7-optional-elements-using-null)
   * [Using `documentFragment` for fragments](#using-documentfragment-for-fragments)
     + [Exmaple 8: Using `documentFragment` to reduce DOM operations](#exmaple-8-using-documentfragment-to-reduce-dom-operations)
     + [Example 9: Using `elem.js` for Templates](#example-9-using-elemjs-in-custom-element-templates)
@@ -210,6 +211,26 @@ const items = [
 
 document.body.appendChild(
 	ul( items.map( i => li(i) ) )
+);
+```
+
+### Example 7: Optional elements using null
+
+Null values passed to `elems.js` generated functions are skipped and ignored.
+This can be useful for making the presence of sub-elements optional.
+
+```js
+import { elemGenerator } from '../elems.js';
+
+const a  = elemGenerator( 'a'  );
+const li = elemGenerator( 'li' );
+const ul = elemGenerator( 'ul' );
+
+document.body.appendChild(
+	ul( items.map( i => li(
+		i.title,
+		i.link ? a( 'link', { href: i.link } ) : null,
+	) ) )
 );
 ```
 

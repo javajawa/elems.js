@@ -16,6 +16,10 @@
  * The returned function takes any number of arguments of different
  * types, and builds up the element according to them.
  *
+ * Null:
+ *   Any null values supplied in the argument list are ignored. This can be
+ *   used for conditionally including elements.
+ *
  * Arrays:
  *   Any arrays supplied in the argument list are treated as additional
  *   arguments. This has a maximum nested of three layers deep.
@@ -83,7 +87,11 @@ export function elemGenerator(tag, ns)
 
 		args.forEach( arg =>
 		{
-			if ( arg instanceof Attr )
+			if ( arg === null )
+			{
+				return;
+			}
+			else if ( arg instanceof Attr )
 			{
 				elem.setAttribute( arg.name, arg.value );
 			}
